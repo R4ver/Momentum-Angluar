@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="Momentum">
+    <head>
+        <meta charset="UTF-8">
+        <title>Momentum in Angular</title>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="build/style.css">
+
+        <!-- scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="src/js/services.js"></script>
+        <script src="src/js/controllers.js"></script>
+    </head>
+    <body>
+        <div ng-controller="appController" class="app__wrapper">
+            <div class="background__module" ng-controller="backgroundCtrl" style="background:url({{ background }}) center center fixed;background-size:cover;"></div>
+            <div class="bg__overlay"></div>
+    
+            <div class="time__module" ng-controller="timeCtrl">
+                <span class="time">{{ clock | date:'HH:mm'}}</span>
+            </div>
+
+            <!-- If user is new show logi screen -->
+            <div class="login-screen">
+                <div class="welcome__module" ng-controller="welcomeCtrl">
+                    <span>{{ defaultName }}</span>
+                </div>
+
+                <div class="login__module" >
+                    <form ng-submit="submit()" ng-controller="loginCtrl">
+                        <input type="text" id="loginText" ng-model="text" placeholder="What is your name"  autocomplete="off"/>
+                        <input type="submit" id="loginBtn" value="Submit" />
+                    </form>
+                </div>
+            </div>
+
+            <!-- Show this when user has given name -->
+            <div class="user-screen">
+                <div class="welcome__module" ng-controller="welcomeCtrl">
+                    <span>{{ welcome }}</span>
+                </div>
+
+                <div class="quote__module" ng-controller="quoteCtrl" >
+                    <div class="quote">
+                        <p>{{ quote }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="logout__module" ng-controller="logoutCtrl">
+                <a href="#" id="logoutBtn" ng-click="submit()">Logout</a>
+            </div>
+        </div>
+    </body>
+</html>

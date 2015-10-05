@@ -17,6 +17,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#Build paths and modules
+build/
+node_modules/
+.sass-cache/
+npm-debug.log
+
 # =========================
 # Operating System Files
 # =========================

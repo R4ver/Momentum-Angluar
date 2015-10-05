@@ -1,0 +1,174 @@
+//Fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700)
+
+$roboto: "Roboto", sans-serif
+
+//Font-weight
+$thin: 100
+$light: 300
+$normal: 400
+$medium: 500
+$bold: 700
+
+//Variables
+$maco: #09f
+$black: #272727
+$white: #efefef
+
+*
+    -webkit-outline: 0
+    -moz-outline: 0
+    -o-outline: 0
+    outline: 0
+    text-decoration: none
+    text-shadow: rgba(0,0,0,.01) 0 0 1px
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+
+    tansition: all .15s ease
+
+*:focus 
+    outline: none
+
+*::-moz-focus-inner 
+    border: 0 
+
+html, body
+    margin: 0
+    padding: 0
+
+body
+    font-family: $roboto
+    background-color: $black
+
+.bg__overlay
+    display: block
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: -1
+
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%)
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0)))
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
+    background: -o-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
+    background: -ms-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 )
+
+
+.background__module
+    display: block
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: -2
+
+.time__module
+    display: block
+    position: relative
+    margin-top: 80px
+
+    color: $white
+    font-size: 120px
+    font-weight: $thin
+    text-align: center
+
+.welcome__module
+    display: block
+    position: relative
+
+    color: $white
+    font-size: 32px
+    font-weight: $thin
+    text-align: center
+
+.quote__module
+    display: block
+    position: absolute
+    bottom: 0
+    width: 100%
+
+    p
+        color: $white
+        font-size: 24px
+        font-weight: $thin
+        text-align: center
+
+.user-screen
+    display: none
+
+\::-moz-placeholder /* Firefox 19+ */
+    color: $white 
+
+\:-ms-input-placeholder 
+    color: $white
+
+.login__module
+    display: flex
+    justify-content: center
+    position: relative
+    margin-top: 42px
+    text-align: center
+
+    form
+        display: block
+        position: relative
+        width: 30vw
+    
+    #loginText
+        display: block
+        position: relative
+        padding: 8px
+        width: 100%
+
+        color: $white
+        font-size: 24px
+        font-weight: $light
+        text-align: center
+        
+        background-color: rgba(0,0,0,.5)
+        border: 0px
+        border-bottom: 2px solid $white
+
+    #loginBtn
+        display: block
+        position: absolute
+        right: 0
+        padding: 8px 16px
+
+        color: $black
+        font-size: 16px
+        font-weight: $normal
+        text-align: center
+        
+        background-color: $white
+        border: 0px
+        border-radius: 0
+
+        &:hover
+            cursor: pointer
+
+.logout__module
+    display: block
+    position: absolute
+    bottom: 0
+    padding: 16px
+
+    #logoutBtn
+        display: none
+        padding: 8px 16px
+
+        color: $black
+        font-size: 16px
+        font-weight: $normal
+        text-align: center
+        
+        background-color: $white
+        border: 0px
+        border-radius: 0
