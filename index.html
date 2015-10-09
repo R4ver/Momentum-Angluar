@@ -9,13 +9,14 @@
 
         <!-- scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://gist.githubusercontent.com/RavingAPD/6a5e49b87f0b3dfc0527/raw/2a79f0f32d71e02a4a4bc0d070b40e25dda41574/muss.js"></script>
         <script src="node_modules/angular/angular.js"></script>
         <script src="src/js/services.js"></script>
         <script src="src/js/controllers.js"></script>
     </head>
     <body>
         <div ng-controller="appController" class="app__wrapper">
-            <div class="background__module" ng-controller="backgroundCtrl" style="background:url({{ background }}) center center fixed;background-size:cover;"></div>
+            <div class="background__module" style="background:url({{ background }}) center center fixed;background-size:cover;"></div>
             <div class="bg__overlay"></div>
     
             <div class="time__module" ng-controller="timeCtrl">
@@ -42,7 +43,7 @@
                     <span>{{ welcome }}</span>
                 </div>
 
-                <div class="quote__module" ng-controller="quoteCtrl" >
+                <div class="quote__module" >
                     <div class="quote">
                         <p>{{ quote }}</p>
                     </div>

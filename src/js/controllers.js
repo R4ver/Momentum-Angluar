@@ -4,35 +4,27 @@ var app = angular.module('Momentum', ["services"]);
 var wallpapers = [];
 var quotes = [];
 
-app.controller('appController', function($scope, getData) {
-  if ( localStorage.getItem("angular-momentum") ) {
-    $(".login-screen").css("display", "none");
-    $(".user-screen").css("display", "block");
-    $("#logoutBtn").css("display", "block");
-  }
+app.controller('appController', function($scope, $interval, randomize, loadData) {
+    loadData.init();
 
-    //Get all the quotes and wallpapers
-    function loadRemoteData() {
-        getData.getBgs().success(function(data){
-            wallpapers = data;
-        });
-
-        getData.getQuotes().success(function(data) {
-            quotes = data;
+    if ( localStorage.getItem("angular-momentum") ) {
+        $(".login-screen").css("display", "none");
+        $.muss([".user-screen", "#logoutBtn"], {
+            "display": "block"
         });
     }
 
-    loadRemoteData();
-});
-
-//Background controller 
-app.controller("backgroundCtrl", function($scope) {
     setTimeout(function() {
-        var rdm = Math.floor(Math.random() * wallpapers.length);
+        $scope.background = randomize.wallpaper();
+    }, 100);
 
-        $scope.background = wallpapers[rdm];
-    }, 1000)
-    
+    setTimeout(function() {
+        $scope.quote = randomize.quotes();
+    }, 100);
+
+    setInterval(function() {
+        $scope.quote = randomize.quotes();
+    }, 5000);
 });
 
 //Controller for the clock on the page
@@ -60,10 +52,11 @@ app.controller("loginCtrl", function($scope) {
         }
 
         $(".login-screen").css("display", "none");
-        $(".user-screen").css("display", "block");
+        $.muss([".user-screen", "#logoutBtn"], {
+            "display": "block"
+        });
         $(".welcome__module span").empty();
         $(".welcome__module span").html("Welcome, " + getStorage());
-        $("#logoutBtn").css("display", "block");
     };
 });
 
@@ -72,28 +65,13 @@ app.controller("logoutCtrl", function($scope) {
     $scope.submit = function() {
         localStorage.removeItem("angular-momentum");
         $(".login-screen").css("display", "block");
-        $(".user-screen").css("display", "none");
-        $("#logoutBtn").css("display", "none");
+        $.muss([".user-screen", "#logoutBtn"], {
+            "display": "none"
+        });
 
         $(".login-screen span").html("Welcome, awesome person");
         $("#loginText").val("");
     }
-});
-
-//Prints out random quotes
-app.controller("quoteCtrl", function($scope, $interval) {
-    //Creates a random number and pulls a quote from $scope.quotes
-    setTimeout(function() {
-        var tick = function() {
-            var rdm = Math.floor(Math.random() * quotes.length);
-            console.log(rdm);
-
-            $scope.quote = quotes[rdm].the_quote + " - " + quotes[rdm].author;
-        }
-        tick();
-        $interval(tick, 5000); // Tick on 5s
-    }, 100) //timeout till $http request is done
-    
 });
 
 //Gets the localStorage key
